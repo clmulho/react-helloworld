@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
+import RandomColorBox from "./RandomColorBox";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>`Ciaran`, helloworld!!!</div>
-    );
-  }
+export default function App() {
+  return (
+    <div style={{ padding: "40px" }}>
+      <h1>Ciaran, Hey!!! 👋</h1>
+      <p>Click the button to change the color of the box below:</p>
+
+      <RandomColorBox />
+    </div>
+  );
 }
-
-export default App;
