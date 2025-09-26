@@ -1,10 +1,10 @@
-
 import React from "react";
 import RandomColorBox from "./RandomColorBox";
 import RandomQuote from "./RandomQuote";
 import RandomNumber from "./RandomNumber";
 import RandomEmoji from "./RandomEmoji";
 import RandomJoke from "./RandomJoke";
+import BackendMessage from "./BackendMessage"; // 👈 NEW
 
 export default function App() {
   return (
@@ -25,6 +25,9 @@ export default function App() {
 
       <h2 style={{ marginTop: "40px" }}>😂 Random Joke</h2>
       <RandomJoke />
+
+      <h2 style={{ marginTop: "40px" }}>🖥️ Backend API</h2>
+      <BackendMessage />  {/* 👈 Shows .NET API response */}
     </div>
   );
 }
