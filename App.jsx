@@ -4,7 +4,15 @@ import RandomQuote from "./RandomQuote";
 import RandomNumber from "./RandomNumber";
 import RandomEmoji from "./RandomEmoji";
 import RandomJoke from "./RandomJoke";
-import BackendMessage from "./BackendMessage"; // 👈 NEW
+import BackendMessage from "./BackendMessage"; // 👈 .NET API response
+
+const dotnetSnippet = `var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(o => o.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
+var app = builder.Build();
+app.UseCors();
+app.MapGet("/api/hello/{name}", (string name) => Results.Ok(new { message = $"Hello, {name}!" }));
+app.MapGet("/api/health", () => Results.Ok("OK"));
+app.Run();`;
 
 export default function App() {
   return (
@@ -27,7 +35,24 @@ export default function App() {
       <RandomJoke />
 
       <h2 style={{ marginTop: "40px" }}>🖥️ Backend API</h2>
-      <BackendMessage />  {/* 👈 Shows .NET API response */}
-    </div>
-  );
-}
+      {/* This component should call /api/health or /api/hello/{name} on your .NET minimal API */}
+      <BackendMessage />
+
+      <h2 style={{ marginTop: "40px" }}>⚙️ .NET Minimal API Snippet</h2>
+      <p>
+        We added a tiny .NET minimal API to this repo at{" "}
+        <a
+          href="https://github.com/clmulho/react-helloworld/blob/main/server-dotnet/Program.cs"
+          target="_blank"
+          rel="noreferrer"
+        >
+          server-dotnet/Program.cs
+        </a>
+        .
+      </p>
+      <pre
+        style={{
+          background: "#111",
+          color: "#eee",
+          padding: 16,
+          border
